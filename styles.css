@@ -146,9 +146,27 @@ body {
     z-index: 2;
 }
 
+.hero-logo-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.hero-logo-bg img {
+    width: min(560px, 80vw);
+    height: auto;
+    opacity: 0.18;
+    mix-blend-mode: screen;
+    filter: saturate(1.4);
+}
+
 .hero .container {
     position: relative;
-    z-index: 3;
+    z-index: 4;
     padding-top: 80px;
     padding-bottom: 80px;
 }
