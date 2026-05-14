@@ -1,6 +1,6 @@
-# Geoff's Mobile Auto Repair - Website
+﻿# AutoTek Mobile Auto Repair - Website
 
-This repository contains the front-end code for Geoff's Mobile Auto Repair, a local service business based in Charlotte, NC.
+This repository contains the front-end code for AutoTek Mobile Auto Repair, a local service business based in Charlotte, NC.
 
 ## Tech Stack
 - HTML5 (Semantic & SEO Optimized)

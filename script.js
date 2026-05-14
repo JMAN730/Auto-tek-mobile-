@@ -1,4 +1,4 @@
-// Mobile menu toggle
+﻿// Mobile menu toggle
 document.addEventListener('DOMContentLoaded', function() {
     const toggle = document.getElementById('mobileToggle');
     const nav = document.getElementById('navLinks');
@@ -78,7 +78,7 @@ function initializeMap() {
             allowfullscreen="" 
             loading="lazy" 
             referrerpolicy="no-referrer-when-downgrade"
-            title="Geoff's Mobile Auto Repair - Charlotte, NC Service Area">
+            title="AutoTek Mobile Auto Repair - Charlotte, NC Service Area">
         </iframe>
     `;
 }
