@@ -59,28 +59,63 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-// Initialize Google Maps Embed
+// Initialize Leaflet Map with 15-mile service radius
 document.addEventListener('DOMContentLoaded', function() {
     initializeMap();
 });
 
 function initializeMap() {
     const mapElement = document.getElementById('map');
-    if (!mapElement) return;
+    if (!mapElement || typeof L === 'undefined') {
+        // Leaflet not loaded yet — retry once it is
+        window.addEventListener('load', initializeMap);
+        return;
+    }
 
-    // Create Google Maps embed iframe
-    mapElement.innerHTML = `
-        <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d97344.76779450793!2d-75.29286103440433!3d39.95258860271487!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c6b7d8d4b54837%3A0x667ef401d1e6af88!2sPhiladelphia%2C%20PA!5e0!3m2!1sen!2sus!4v1700000000000" 
-            width="100%" 
-            height="100%" 
-            style="border:0; border-radius: 12px;" 
-            allowfullscreen="" 
-            loading="lazy" 
-            referrerpolicy="no-referrer-when-downgrade"
-            title="AutoTek Mobile Auto Repair - Philadelphia, PA Service Area">
-        </iframe>
-    `;
+    const shopLat  = 39.9752;
+    const shopLng  = -75.2321;
+    const radiusMiles = 15;
+    const radiusMeters = radiusMiles * 1609.344; // 24,140 m
+
+    // Init map
+    const map = L.map(mapElement, { zoomControl: true, scrollWheelZoom: false })
+                 .setView([shopLat, shopLng], 10);
+
+    // OpenStreetMap tiles (free, no API key)
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        maxZoom: 19
+    }).addTo(map);
+
+    // 15-mile service area circle
+    L.circle([shopLat, shopLng], {
+        radius: radiusMeters,
+        color: '#c0392b',
+        fillColor: '#c0392b',
+        fillOpacity: 0.08,
+        weight: 2,
+        opacity: 0.7
+    }).addTo(map).bindPopup('<strong>AutoTek Service Area</strong><br>15-mile radius from shop');
+
+    // Shop marker
+    const shopIcon = L.divIcon({
+        className: '',
+        html: `<div style="
+            background:#c0392b;
+            width:14px;height:14px;
+            border-radius:50%;
+            border:3px solid #fff;
+            box-shadow:0 2px 6px rgba(0,0,0,0.5)">
+        </div>`,
+        iconSize: [14, 14],
+        iconAnchor: [7, 7],
+        popupAnchor: [0, -10]
+    });
+
+    L.marker([shopLat, shopLng], { icon: shopIcon })
+     .addTo(map)
+     .bindPopup('<strong>AutoTek Mobile Auto Repair</strong><br>902 Wynnewood Rd<br>Philadelphia, PA 19151')
+     .openPopup();
 }
 
 
