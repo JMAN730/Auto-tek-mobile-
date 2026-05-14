@@ -71,7 +71,7 @@ function initializeMap() {
     // Create Google Maps embed iframe
     mapElement.innerHTML = `
         <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3058.034!2d-75.2321!3d39.9752!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c6b9349c35100f%3A0x1eeec88f8eb6b017!2sAutotek+mobile+automotive+specialist!5e0!3m2!1sen!2sus!4v1700000000000" 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d97344.76779450793!2d-75.29286103440433!3d39.95258860271487!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c6b7d8d4b54837%3A0x667ef401d1e6af88!2sPhiladelphia%2C%20PA!5e0!3m2!1sen!2sus!4v1700000000000" 
             width="100%" 
             height="100%" 
             style="border:0; border-radius: 12px;" 
